@@ -1,0 +1,244 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding-top: 80px;
+  background-color: #f8f9fa;
+}
+
+/* Navbar */
+.navbar {
+  background: #fff;
+}
+
+.navbar-brand {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #28a745;
+}
+
+.nav-link {
+  color: #333;
+  transition: 0.3s;
+}
+
+.nav-link:hover {
+  color: #28a745;
+}
+
+/* Hero Section */
+.hero-section {
+  height: 80vh;
+  background: url("images/market1.jpg") center/cover no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-section .overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.hero-content {
+  position: relative;
+  color: #fff;
+  text-align: center;
+  z-index: 1;
+}
+
+/* Product Cards */
+#products {
+  padding: 50px 20px;
+  background: linear-gradient( #ffffff 0%, #66BB6A  100%);
+  text-align: center;
+}
+
+#products h2 {
+  font-size: 2rem;
+  margin-bottom: 60px;
+  color: #4cb332;
+  
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.product-card {
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.product-card h3 {
+  margin: 10px 0 5px;
+  color: #333;
+}
+
+.product-card p {
+  color: #666;
+  font-weight: bold;
+}
+
+/* Reviews */
+.review-card {
+  background: #fff;
+  padding: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-radius: 8px;
+}
+
+.review-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+/* Contact Form */
+.contact-form {
+  max-width: 500px;
+  margin: auto;
+}
+
+footer {
+    background:#b7cf9c;
+    color:white;
+  font-size: 14px;
+}
+.cart-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  border-radius: 50px;
+  padding: 10px 20px;
+  font-weight: bold;
+  z-index: 1000;
+}
+#about {
+  background: linear-gradient( #66BB6A 0%, #b6bbe6  100%);
+  text-align: center;
+  color: rgb(255, 255, 255);}
+
+
+  #reviews {
+  background: linear-gradient( #b6bbe6  0%, #ffffff  100%);
+  text-align: center;
+padding: 100px 20px;
+}
+
+.review-container {
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+  size: 50%;
+}
+
+/* Wrapper for sliding */
+.review-wrapper {
+  display: flex;
+  transition: transform 0.6s ease-in-out;
+}
+
+/* Each review card */
+.review {
+  flex: 0 0 33.33%;  /* show 3 at a time */
+  box-sizing: border-box;
+  font-size: 1rem;
+  padding: 20px;
+  border-radius: 10px;
+  background: #ffffff;
+  margin: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.review img {
+  max-width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Contact Info Section */
+.contact-info-section {
+  background: linear-gradient( #ffffff  0%, #b7cf9c  100%);
+  padding: 50px 
+  
+}
+
+.contact-info-section .section-title {
+  font-weight: bold;
+  color: #4a8056;
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.contact-details li {
+  font-size: 16px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #333;
+}
+
+.contact-details li i {
+  color: #28a745;
+  font-size: 18px;
+}
+
+/* Social Media Icons */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.social-icons a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-size: 22px;
+  transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+  transform: scale(1.15);
+}
+
+/* Colors for each platform */
+.facebook { color: #1877f2; }
+.instagram { color: #e4405f; }
+.twitter { color: #1da1f2; }
+.linkedin { color: #0077b5; }
+.youtube { color: #ff0000; }

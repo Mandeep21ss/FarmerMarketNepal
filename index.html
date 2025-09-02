@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farmers Marketplace Nepal</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center fw-bold" href="#home">
+      <img src="images/logo.png" alt="Logo" height="60" class="me-2">
+      Farmers Marketplace Nepal
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#home"><i class="bi bi-house-door-fill"></i> Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#products"><i class="bi bi-cart-fill"></i> Products</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about"><i class="bi bi-info-circle-fill"></i> About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#reviews"><i class="bi bi-stars"></i> Reviews</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact"><i class="bi bi-telephone-fill"></i> Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section id="home" class="hero-section text-center">
+  <div class="overlay"></div>
+  <div class="hero-content">
+    <h1>Connecting Farmers with Buyers</h1>
+    <p>Fresh, Fair, and Sustainable Trade in Nepal</p>
+    <a href="#products" class="btn btn-success btn-lg mt-3">Explore Products</a>
+  </div>
+</section>
+
+<!-- Products Section -->
+<section id="products">
+  <h2><i class="bi bi-cart-fill"></i> Available Products</h2>
+  <div class="product-grid">
+    <div class="product-card">
+      <img src="images/tomatoes.png" alt="Tomatoes">
+      <h3>Fresh Tomatoes</h3>
+      <p>Rs. 80 / kg</p>
+      <button class="btn btn-success" onclick="addToCart('Fresh Tomatoes', 80)">Add to Cart</button>
+
+    </div>
+    <div class="product-card">
+      <img src="images/potatoes.jpg" alt="Potatoes">
+      <h3>Organic Potatoes</h3>
+      <p>Rs. 60 / kg</p>
+      <button class="btn btn-success" onclick="addToCart('Organic Potatoes', 60)">Add to Cart</button>
+
+    </div>
+    <div class="product-card">
+      <img src="images/cabbage.jpg" alt="Cabbage">
+      <h3>Green Cabbage</h3>
+      <p>Rs. 50 / kg</p>
+      <button class="btn btn-success" onclick="addToCart('Green Cabbage', 50)">Add to Cart</button>
+
+    </div>
+    <div class="product-card">
+      <img src="images/red-apples.jpg" alt="Apples">
+      <h3>Red Apples</h3>
+      <p>Rs. 150 / kg</p>
+      <button class="btn btn-success" onclick="addToCart('Red Apples', 150)" >Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="images/ginger.jpg" alt="Ginger">
+      <h3>Ginger</h3>
+      <p>Rs. 30 / kg</p>
+      <button class="btn btn-success" onclick="addToCart('Ginger', 30)">Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="images/cauliflower.jpg" alt="Cauliflower">
+      <h3>Fresh Cauliflowers</h3>
+      <p>Rs. 90 / kg</p>
+      <button class="btn btn-success" onclick="addToCart('Fresh Cauliflowers', 90)">Add to Cart</button>
+
+    </div>
+    <div class="product-card">
+      <img src="images/banana.jpg" alt="Banana">
+      <h3>Banana</h3>
+      <p>Rs. 150 / dosen</p>
+      <button class="btn btn-success" onclick="addToCart('Banana', 150)">Add to Cart</button>
+
+    </div>
+    <div class="product-card">
+      <img src="images/beans.jpg" alt="Beans">
+      <h3>Healthy Bean</h3>
+      <p>Rs. 120 / kg</p>
+      <button class="btn btn-success" onclick="addToCart('Healthy Beans', 120)">Add to Cart</button>
+
+    </div>
+    <div class="product-card">
+      <img src="images/okra.jpg" alt="Ladyfinger">
+      <h3>Lady Finger</h3>
+      <p>Rs. 75 / kg</p>
+      <button class="btn btn-success" onclick="addToCart('Lady Finger', 75)">Add to Cart</button>
+
+    </div>
+    <div class="product-card">
+      <img src="images/orange.jpg" alt="Orange">
+      <h3>Orange</h3>
+      <p>Rs. 150 / kg</p>
+      <button class="btn btn-success" onclick="addToCart('Orange', 150)">Add to Cart</button>
+
+    </div>
+    <div class="product-card">
+      <img src="images/spinach.jpg" alt="spinach">
+      <h3>Leafy Spinach</h3>
+      <p>Rs. 80 / kg</p>
+      <button class="btn btn-success" onclick="addToCart('Leafy Spinach' , 80)">Add to Cart</button>
+
+    </div>
+    <div class="product-card">
+      <img src="images/garlic.jpg" alt="Garlic">
+      <h3>Garlic</h3>
+      <p>Rs. 75 / kg</p>
+      <button class="btn btn-success" onclick="addToCart('Garlic', 75)">Add to Cart</button>
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="about-section">
+  <div class="container text-center">
+    <h2 class="section-title"><i class="bi bi-info-circle-fill"></i> About Us</h2>
+    <p class="lead">
+      Farmers Marketplace Nepal connects local farmers directly with buyers. 
+      We ensure fair pricing, sustainable agriculture, and easy access to fresh produce.
+    </p>
+    <div class="row mt-4">
+      <div class="col-md-4"><h4>Who We Are</h4><p>We are Nepal’s first digital farmers' marketplace.</p></div>
+      <div class="col-md-4"><h4>Our Mission</h4><p>Empowering farmers through fair trade and easy access to markets.</p></div>
+      <div class="col-md-4"><h4>Our Impact</h4><p>Thousands of farmers connected • Fresh produce delivered • Rural economy strengthened.</p></div>
+    </div>
+  </div>
+</section>
+<!-- Reviews Section -->
+  <section id="reviews">
+    <h2><i class="bi bi-stars"></i> Buyer Reviews</h2>
+    <div class="review-container">We are trusted by thousands of farmers and buyers across Nepal.<br><br>
+  <div class="review-wrapper">
+    <div class="review"><img src="images/farmer1.jpg" alt=""><p>“Great platform, I sell more crops than ever!”</p></div>
+    <div class="review"><img src="images/farmer2.jpg" alt=""><p>“Easy to use and payments are fair.”</p></div>
+    <div class="review"><img src="images/farmer3.jpg" alt=""><p>“Now I can reach buyers directly.”</p></div>
+    <div class="review"><img src="images/farmer1.jpg" alt=""><p>“Fresh vegetables delivered to my home!”</p></div>
+    <div class="review"><img src="images/farmer2.jpg" alt=""><p>“Good for both farmers and customers.”</p></div>
+    <div class="review"><img src="images/farmer3.jpg" alt=""><p>“It’s changing the way we do farming in Nepal.”</p></div>
+  </div>
+</div>
+
+  </section>
+  
+<!-- Contact Section -->
+<section id="contact" class="contact-section">
+  <div class="container text-center">
+    <h2 class="section-title"><i class="bi bi-telephone-fill"></i> Contact Us</h2>
+    <form id="contactForm" class="contact-form">
+      <div class="mb-3">
+        <input type="text" id="name" class="form-control" placeholder="Your Name" required>
+      </div>
+      <div class="mb-3">
+        <input type="email" id="email" class="form-control" placeholder="Your Email" required>
+      </div>
+      <div class="mb-3">
+        <textarea id="message" class="form-control" rows="5" placeholder="Your Message" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-success">Send Message</button>
+    </form>
+    <div id="formMessage" class="mt-3"></div>
+  </div>
+</section>
+<!-- Contact Info & Social Section -->
+<section id="contact-info" class="contact-info-section">
+  <div class="container">
+    <div class="row align-items-center">
+
+      <!-- Left Column: Contact Details -->
+      <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
+        <h2 class="section-title"><i class="bi bi-geo-alt-fill"></i> Contact Information</h2>
+        <ul class="contact-details list-unstyled">
+          <li><i class="bi bi-geo-alt"></i> Kathmandu, Nepal</li>
+          <li><i class="bi bi-envelope"></i> support@farmersmarketnepal.com</li>
+          <li><i class="bi bi-telephone"></i> +977-9800000000</li>
+          <li><i class="bi bi-clock"></i> Open: Sun - Fri, 7:00 AM - 7:00 PM</li>
+        </ul>
+      </div>
+
+      <!-- Right Column: Social Media -->
+      <div class="col-lg-6 col-md-6 text-center">
+        <h2 class="section-title"><i class="bi bi-share-fill"></i> Follow Us</h2>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/" target="_blank" class="facebook"><i class="bi bi-facebook"></i></a>
+          <a href="https://www.instagram.com/" target="_blank" class="instagram"><i class="bi bi-instagram"></i></a>
+          <a href="https://twitter.com/" target="_blank" class="twitter"><i class="bi bi-twitter"></i></a>
+          <a href="https://www.linkedin.com/" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></a>
+          <a href="https://www.youtube.com/" target="_blank" class="youtube"><i class="bi bi-youtube"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<footer class="footer text-center py-3">
+  <p>&copy; 2025 Farmers Marketplace Nepal. All rights reserved.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+<!-- Cart Modal -->
+<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="cartModalLabel">🛒 Your Cart</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered text-center">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Price (Rs.)</th>
+              <th>Quantity</th>
+              <th>Total</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="cartItems">
+            <tr><td colspan="5">Your cart is empty.</td></tr>
+          </tbody>
+        </table>
+        <h5 class="text-end">Grand Total: Rs. <span id="cartTotal">0</span></h5>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button class="btn btn-success">Checkout</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Floating Cart Button -->
+<button class="btn btn-primary cart-btn" data-bs-toggle="modal" data-bs-target="#cartModal">
+  <i class="bi bi-cart-fill"></i> Cart (<span id="cartCount">0</span>)
+</button>
+
+</body>
+</html>
