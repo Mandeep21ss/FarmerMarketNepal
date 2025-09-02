@@ -27,14 +27,7 @@ body {
 }
 
 /* Hero Section */
-.hero-section {
-  height: 80vh;
-  background: url("images/market1.jpg") center/cover no-repeat;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 
 .hero-section .overlay {
   position: absolute;
@@ -242,3 +235,4 @@ padding: 100px 20px;
 .twitter { color: #1da1f2; }
 .linkedin { color: #0077b5; }
 .youtube { color: #ff0000; }
+
