@@ -55,7 +55,7 @@ main {
 .social-icons {
   display: flex;
   justify-content: center;
-  gap: 18px;
+  gap: 16px;
   margin-top: 18px;
   flex-wrap: wrap;
 }
@@ -64,21 +64,23 @@ main {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 56px;
-  height: 56px;
-  background: linear-gradient(135deg, var(--primary-green), var(--secondary-brown));
-  border-radius: 12px;
-  color: #ffffff;
-  font-size: 1.4rem;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+  width: 52px;
+  height: 52px;
+  background: #ffffff;
+  border-radius: 50%;
+  color: var(--secondary-brown-dark);
+  font-size: 1.25rem;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, color 0.18s ease;
+  box-shadow: 0 6px 18px rgba(12, 18, 20, 0.06);
   text-decoration: none;
-  border: 2px solid rgba(255,255,255,0.06);
+  border: 1px solid rgba(107,66,38,0.06);
 }
 
 .social-icons a:hover {
-  transform: scale(1.08);
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.22);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(12, 18, 20, 0.09);
+  background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(107,66,38,0.06));
+  color: #ffffff;
 }
 
 /* Subtle gradient divider between sections */
@@ -91,9 +93,9 @@ section:not(:last-child)::after {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -20px;
-  height: 40px;
-  background: linear-gradient(180deg, rgba(255,255,255,0), rgba(107,66,38,0.05));
+  bottom: -18px;
+  height: 36px;
+  background: linear-gradient(180deg, rgba(255,255,255,0), rgba(16,24,28,0.035));
   pointer-events: none;
   z-index: 0;
 }
