@@ -53,6 +53,36 @@ main {
   z-index: 10;
 }
 
+.navbar .container {
+  align-items: center;
+}
+
+.navbar-toggler {
+  border-color: rgba(16, 185, 129, 0.35);
+}
+
+.navbar-toggler-icon {
+  filter: brightness(0.7);
+}
+
+.navbar-collapse {
+  transition: all 0.3s ease;
+}
+
+.navbar-nav {
+  gap: 0.75rem;
+}
+
+.navbar-nav .nav-link {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+  background: rgba(16, 185, 129, 0.12);
+}
+
 .social-icons {
   display: flex;
   justify-content: center;
@@ -80,7 +110,7 @@ main {
 .social-icons a:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 30px rgba(12, 18, 20, 0.09);
-  background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(107,66,38,0.06));
+  background: var(--primary-green);
   color: #ffffff;
 }
 
@@ -89,69 +119,7 @@ section {
   position: relative;
 }
 
-/* Smooth fades between sections */
-section::before,
-section::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 40px;
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* generic fades (kept minimal) */
-/* disable pseudo-element fades now that sections use gradients */
-/* Per-section precise fades */
-.fade-to-light::before { background: linear-gradient(180deg, #f8fafb, rgba(255,255,255,0)); }
-.fade-to-light::after  { background: linear-gradient(180deg, rgba(255,255,255,0), #f8fafb); }
-
-.fade-to-brown::before { background: linear-gradient(180deg, rgba(107,66,38,0.08), rgba(107,66,38,0)); }
-.fade-to-brown::after  { background: linear-gradient(180deg, rgba(107,66,38,0), rgba(107,66,38,0.08)); }
-
-.fade-to-green::before { background: linear-gradient(180deg, rgba(16,185,129,0.08), rgba(16,185,129,0)); }
-.fade-to-green::after  { background: linear-gradient(180deg, rgba(16,185,129,0), rgba(16,185,129,0.08)); }
-
-.fade-to-dark::before { background: linear-gradient(180deg, rgba(16,24,28,0.08), rgba(16,24,28,0)); }
-.fade-to-dark::after  { background: linear-gradient(180deg, rgba(16,24,28,0), rgba(16,24,28,0.08)); }
-
-/* Hero should stay plain image with original overlay */
-.hero-section::after {
-  display: none;
-}
-
-/* Navbar bottom fade to gently merge into hero */
-.navbar::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -18px;
-  height: 28px;
-  background: linear-gradient(180deg, rgba(255,255,255,1), rgba(255,255,255,0));
-  pointer-events: none;
-  z-index: 0;
-}
-
-section:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -18px;
-  height: 36px;
-  background: linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,0.5));
-  pointer-events: none;
-  z-index: 0;
-}
-
 section > .container { position: relative; z-index: 1; }
-  font-weight: 500;
-  transition: all 0.3s ease;
-  position: relative;
-  padding: 0.5rem 1rem !important;
-}
 
 .nav-link::after {
   content: '';
@@ -160,7 +128,7 @@ section > .container { position: relative; z-index: 1; }
   left: 50%;
   width: 0;
   height: 3px;
-  background: linear-gradient(135deg, var(--primary-green), var(--secondary-brown));
+  background: var(--primary-green);
   transition: all 0.3s ease;
   transform: translateX(-50%);
 }
@@ -186,7 +154,7 @@ section > .container { position: relative; z-index: 1; }
 }
 
 .btn-success {
-  background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-dark) 100%);
+  background: var(--primary-green);
   color: white;
   box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
 }
@@ -225,14 +193,7 @@ section > .container { position: relative; z-index: 1; }
 }
 
 .hero-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.28) 0%, rgba(107, 66, 38, 0.28) 100%);
-  z-index: 1;
+  display: none;
 }
 
 .hero-section .overlay {
@@ -241,7 +202,7 @@ section > .container { position: relative; z-index: 1; }
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.28);
+  background: rgba(0, 0, 0, 0.18);
   z-index: 1;
 }
 
@@ -250,7 +211,6 @@ section > .container { position: relative; z-index: 1; }
   color: #fff;
   text-align: center;
   z-index: 2;
-  animation: fadeInUp 1s ease-out;
 }
 
 .hero-content h1 {
@@ -269,21 +229,11 @@ section > .container { position: relative; z-index: 1; }
   font-weight: 300;
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
 /* ===== PRODUCTS SECTION ===== */
 #products {
   padding: 80px 20px;
-  background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 50%, #f0fdf4 100%);
+  background: var(--bg-light);
   text-align: center;
   position: relative;
 }
@@ -322,6 +272,7 @@ section > .container { position: relative; z-index: 1; }
   display: flex;
   flex-direction: column;
   height: 100%;
+  min-height: 100%;
 }
 
 .product-card:hover {
@@ -347,6 +298,16 @@ section > .container { position: relative; z-index: 1; }
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+}
+
+.meet-card {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .product-card h3 {
@@ -449,7 +410,7 @@ section > .container { position: relative; z-index: 1; }
 
 /* ===== REVIEWS SECTION ===== */
 #reviews {
-  background: linear-gradient(135deg, #f8fafc 0%, #fdf2f8 100%);
+  background: var(--bg-light);
   text-align: center;
   padding: 80px 20px;
 }
@@ -513,7 +474,7 @@ section > .container { position: relative; z-index: 1; }
 
 /* ===== CONTACT SECTION ===== */
 .contact-info-section {
-  background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-brown) 100%);
+  background: var(--primary-green);
   padding: 80px 20px;
   color: white;
 }
@@ -571,6 +532,7 @@ footer {
   margin-top: auto;
   width: 100%;
   order: 3;
+}
 
 footer p {
   margin: 10px 0;
@@ -591,7 +553,7 @@ footer p {
   align-items: center;
   width: 50px;
   height: 50px;
-  background: linear-gradient(135deg, var(--primary-green), var(--secondary-brown));
+  background: var(--primary-green);
   border-radius: 50%;
   color: #ffffff;
   font-size: 1.2rem;
@@ -633,12 +595,30 @@ footer p {
 /* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 992px) {
   .product-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+    gap: 18px;
+  }
+
+  .hero-content {
+    padding: 0 24px;
+    max-width: 700px;
+    margin: 0 auto;
   }
 
   .hero-content h1 {
     font-size: 2.5rem;
+  }
+
+  .meet-card {
+    min-height: 100%;
+  }
+
+  .contact-info-section .row {
+    gap: 24px;
+  }
+
+  .contact-details li {
+    width: 100%;
   }
 
   .review {
@@ -647,6 +627,64 @@ footer p {
 }
 
 @media (max-width: 768px) {
+  body {
+    padding-top: 0;
+  }
+
+  .hero-content {
+    padding: 0 18px;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .hero-section {
+    height: 55vh;
+    background-attachment: scroll;
+  }
+
+  #products {
+    padding: 50px 18px;
+  }
+
+  #products h2 {
+    font-size: 2rem;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .meet-card {
+    padding: 24px;
+  }
+
+  .contact-info-section {
+    padding: 60px 18px;
+  }
+
+  .contact-details li {
+    flex-direction: column;
+    text-align: left;
+  }
+
+  .contact-details li i {
+    min-width: auto;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .navbar-brand {
+    font-size: 1.1rem;
+  }
+}
   body {
     padding-top: 60px;
   }
@@ -710,12 +748,34 @@ footer p {
     font-size: 1.1rem;
   }
 
+  .hero-content {
+    padding: 0 16px;
+  }
+
   .hero-content h1 {
     font-size: 1.5rem;
   }
 
+  .hero-content p {
+    font-size: 0.95rem;
+  }
+
   .hero-section {
     height: 50vh;
+  }
+
+  .meet-card {
+    padding: 22px;
+  }
+
+  .contact-info-section {
+    padding: 40px 16px;
+  }
+
+  .contact-details li {
+    flex-direction: column;
+    text-align: left;
+    gap: 12px;
   }
 
   .auth-card {
