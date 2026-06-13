@@ -50,6 +50,8 @@ main {
   box-shadow: 0 2px 12px rgba(16, 185, 129, 0.08);
   border-bottom: 1px solid var(--border-color);
   flex-shrink: 0;
+  position: relative;
+  z-index: 10;
 }
 
 .social-icons {
@@ -86,6 +88,49 @@ main {
 /* Subtle gradient divider between sections */
 section {
   position: relative;
+}
+
+/* Smooth fades between sections */
+section::before,
+section::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* top fade: soft white-to-transparent (for sections following darker blocks) */
+section::before {
+  top: -24px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0));
+}
+
+/* bottom fade: soft transparent-to-white (for sections preceding lighter blocks) */
+section::after {
+  bottom: -24px;
+  background: linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,0.95));
+}
+
+/* Hero needs an inverse darker bottom fade to blend into light sections */
+.hero-section::after {
+  bottom: -24px;
+  background: linear-gradient(0deg, rgba(0,0,0,0.42), rgba(0,0,0,0));
+}
+
+/* Navbar bottom fade to gently merge into hero */
+.navbar::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -18px;
+  height: 28px;
+  background: linear-gradient(180deg, rgba(255,255,255,1), rgba(255,255,255,0));
+  pointer-events: none;
+  z-index: 0;
 }
 
 section:not(:last-child)::after {
