@@ -1,24 +1,56 @@
 <%- include('layout', { user: null, body: '' }) %>
 <% function renderBody(){ %>
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <h2>Register</h2>
-      <form id="registerForm">
-        <div class="row">
-          <div class="col-md-6 mb-3"><input class="form-control" name="name" placeholder="Full name" required></div>
-          <div class="col-md-6 mb-3"><input class="form-control" name="email" type="email" placeholder="Email" required></div>
+  <div class="container">
+    <div class="row justify-content-center align-items-center" style="min-height: 70vh;">
+      <div class="col-md-8 col-lg-6">
+        <div class="auth-card">
+          <h2><i class="bi bi-person-plus"></i> Create Account</h2>
+          <form id="registerForm">
+            <div class="row">
+              <div class="col-md-12 mb-3">
+                <label class="form-label"><i class="bi bi-person"></i> Full Name</label>
+                <input class="form-control" name="name" placeholder="John Farmer" required>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 mb-3">
+                <label class="form-label"><i class="bi bi-envelope"></i> Email Address</label>
+                <input class="form-control" name="email" type="email" placeholder="your@email.com" required>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label"><i class="bi bi-lock"></i> Password</label>
+                <input class="form-control" name="password" type="password" placeholder="••••••••" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label"><i class="bi bi-briefcase"></i> Role</label>
+                <select name="role" class="form-control">
+                  <option value="buyer">🛒 Buyer</option>
+                  <option value="farmer">🌾 Farmer</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label"><i class="bi bi-geo"></i> District</label>
+                <input class="form-control" name="district" placeholder="Kathmandu">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label"><i class="bi bi-telephone"></i> Contact Number</label>
+                <input class="form-control" name="contact" placeholder="+977-...">
+              </div>
+            </div>
+            <button class="btn btn-success w-100" type="submit">
+              <i class="bi bi-check-circle"></i> Create Account
+            </button>
+          </form>
+          <div id="registerMessage" class="auth-message"></div>
+          <p class="text-center mt-4 text-muted">
+            Already have an account? <a href="/login" style="color: var(--primary-green); font-weight: 600;">Sign in</a>
+          </p>
         </div>
-        <div class="row">
-          <div class="col-md-6 mb-3"><input class="form-control" name="password" type="password" placeholder="Password" required></div>
-          <div class="col-md-6 mb-3"><select name="role" class="form-control"><option value="buyer">Buyer</option><option value="farmer">Farmer</option></select></div>
-        </div>
-        <div class="row">
-          <div class="col-md-6 mb-3"><input class="form-control" name="district" placeholder="District"></div>
-          <div class="col-md-6 mb-3"><input class="form-control" name="contact" placeholder="Contact number"></div>
-        </div>
-        <button class="btn btn-success">Register</button>
-      </form>
-      <div id="registerMessage" class="mt-2"></div>
+      </div>
     </div>
   </div>
   <script>
@@ -29,7 +61,12 @@
       const res = await fetch('/api/auth/register', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)});
       const data = await res.json();
       const msg = document.getElementById('registerMessage');
-      if (res.ok) { location.href = '/dashboard'; } else { msg.innerText = data.error || 'Register failed'; }
+      if (res.ok) { 
+        location.href = '/dashboard'; 
+      } else { 
+        msg.className = 'auth-message error';
+        msg.innerText = '❌ ' + (data.error || 'Registration failed'); 
+      }
     });
   </script>
 <% } %>

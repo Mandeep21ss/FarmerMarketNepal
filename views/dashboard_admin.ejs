@@ -1,32 +1,126 @@
 <%- include('layout', { user: user, body: '' }) %>
 <% function renderBody(){ %>
-  <h2>Admin Dashboard</h2>
-  <p>Welcome, <%= user.name %></p>
-  <h3>Users</h3>
-  <table class="table">
-    <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Actions</th></tr></thead>
-    <tbody>
-      <% users.forEach(function(u){ %>
-        <tr><td><%= u.name %></td><td><%= u.email %></td><td><%= u.role %></td><td><button class="btn btn-sm btn-danger" onclick="deleteUser(<%= u.id %>)">Delete</button></td></tr>
-      <% }) %>
-    </tbody>
-  </table>
+  <div class="container py-5">
+    <!-- Header -->
+    <div class="mb-5">
+      <h1 class="mb-2"><i class="bi bi-shield-lock"></i> Admin Dashboard</h1>
+      <p class="text-muted">Welcome back, <strong><%= user.name %></strong></p>
+    </div>
 
-  <h3>Products</h3>
-  <div class="row">
-    <% products.forEach(function(p){ %>
-      <div class="col-md-4">
-        <div class="product-card">
-          <img src="<%= p.image || '/images/placeholder.png' %>" alt="<%= p.name_en %>">
-          <h4><%= p.name_en %></h4>
-          <p>Rs. <%= p.price %></p>
+    <!-- Stats Section -->
+    <div class="row mb-5">
+      <div class="col-md-4 mb-3">
+        <div class="auth-card text-center">
+          <h3 style="color: var(--primary-green); font-size: 2.5rem;"><%=users ? users.length : 0%></h3>
+          <p class="text-muted"><i class="bi bi-people"></i> Total Users</p>
         </div>
       </div>
-    <% }) %>
+      <div class="col-md-4 mb-3">
+        <div class="auth-card text-center">
+          <h3 style="color: var(--primary-green); font-size: 2.5rem;"><%=products ? products.length : 0%></h3>
+          <p class="text-muted"><i class="bi bi-shop"></i> Total Products</p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-3">
+        <div class="auth-card text-center">
+          <h3 style="color: var(--primary-green); font-size: 2.5rem;">12</h3>
+          <p class="text-muted"><i class="bi bi-graph-up"></i> Orders Today</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Users Management Section -->
+    <section class="mb-5">
+      <h2 class="mb-4 section-title"><i class="bi bi-people-fill"></i> User Management</h2>
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead style="background: linear-gradient(135deg, var(--primary-green), var(--secondary-purple)); color: white;">
+            <tr>
+              <th><i class="bi bi-person"></i> Name</th>
+              <th><i class="bi bi-envelope"></i> Email</th>
+              <th><i class="bi bi-briefcase"></i> Role</th>
+              <th><i class="bi bi-geo"></i> District</th>
+              <th><i class="bi bi-gear"></i> Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if(users && users.length > 0) { %>
+              <% users.forEach(function(u){ %>
+                <tr>
+                  <td><strong><%= u.name %></strong></td>
+                  <td><%= u.email %></td>
+                  <td>
+                    <span class="badge" style="background: var(--primary-green);">
+                      <%= u.role.charAt(0).toUpperCase() + u.role.slice(1) %>
+                    </span>
+                  </td>
+                  <td><%= u.district || '-' %></td>
+                  <td>
+                    <button class="btn btn-sm btn-outline-danger" onclick="deleteUser(<%= u.id %>)">
+                      <i class="bi bi-trash"></i> Delete
+                    </button>
+                  </td>
+                </tr>
+              <% }) %>
+            <% } else { %>
+              <tr><td colspan="5" class="text-center text-muted py-4"><i class="bi bi-inbox"></i> No users yet</td></tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Products Management Section -->
+    <section>
+      <h2 class="mb-4 section-title"><i class="bi bi-shop"></i> Products on Platform</h2>
+      <% if(products && products.length > 0) { %>
+        <div class="product-grid">
+          <% products.forEach(function(p){ %>
+            <div class="product-card">
+              <img src="<%= p.image || '/images/placeholder.png' %>" alt="<%= p.name_en %>">
+              <div class="product-card-body">
+                <h3><%= p.name_en %></h3>
+                <% if(p.description) { %>
+                  <p class="text-muted small"><%= p.description %></p>
+                <% } %>
+                <div class="product-price">Rs. <%= p.price %> <span style="font-size: 0.8rem; color: var(--text-light);">/ unit</span></div>
+                <button class="btn btn-sm btn-outline-danger w-100" onclick="deleteProduct(<%= p.id %>)">
+                  <i class="bi bi-trash"></i> Remove
+                </button>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+      <% } else { %>
+        <div class="alert alert-info text-center">
+          <i class="bi bi-info-circle"></i> No products on platform yet
+        </div>
+      <% } %>
+    </section>
   </div>
 
   <script>
-    async function deleteUser(id){ if(!confirm('Delete user?')) return; const res = await fetch('/api/users/'+id, { method:'DELETE' }); if(res.ok) location.reload(); }
+    async function deleteUser(id) {
+      if (!confirm('Are you sure you want to delete this user? This action cannot be undone.')) return;
+      const res = await fetch('/api/users/' + id, { method: 'DELETE' });
+      if (res.ok) {
+        alert('✓ User deleted successfully');
+        location.reload();
+      } else {
+        alert('❌ Failed to delete user');
+      }
+    }
+
+    async function deleteProduct(id) {
+      if (!confirm('Are you sure you want to remove this product?')) return;
+      const res = await fetch('/api/products/' + id, { method: 'DELETE' });
+      if (res.ok) {
+        alert('✓ Product removed successfully');
+        location.reload();
+      } else {
+        alert('❌ Failed to remove product');
+      }
+    }
   </script>
 <% } %>
 <%- renderBody() %>
