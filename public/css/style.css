@@ -4,6 +4,7 @@
   --primary-dark: #059669;
   --primary-light: #6ee7b7;
   --secondary-purple: #8b5cf6;
+  --secondary-brown: #8b5a2b;
   --accent-orange: #f97316;
   --bg-light: #f8fafc;
   --text-dark: #1e293b;
@@ -53,7 +54,7 @@ main {
 .navbar-brand {
   font-size: 1.35rem;
   font-weight: 800;
-  background: linear-gradient(135deg, var(--primary-green), var(--secondary-purple));
+  background: linear-gradient(135deg, var(--primary-green), var(--secondary-brown));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -90,7 +91,7 @@ main {
   left: 50%;
   width: 0;
   height: 3px;
-  background: linear-gradient(135deg, var(--primary-green), var(--secondary-purple));
+  background: linear-gradient(135deg, var(--primary-green), var(--secondary-brown));
   transition: all 0.3s ease;
   transform: translateX(-50%);
 }
@@ -161,7 +162,7 @@ main {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.3) 0%, rgba(139, 92, 246, 0.3) 100%);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.3) 0%, rgba(139, 90, 43, 0.3) 100%);
   z-index: 1;
 }
 
@@ -443,7 +444,7 @@ main {
 
 /* ===== CONTACT SECTION ===== */
 .contact-info-section {
-  background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-purple) 100%);
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-brown) 100%);
   padding: 80px 20px;
   color: white;
 }
@@ -521,7 +522,7 @@ footer p {
   align-items: center;
   width: 50px;
   height: 50px;
-  background: linear-gradient(135deg, var(--primary-green), var(--secondary-purple));
+  background: linear-gradient(135deg, var(--primary-green), var(--secondary-brown));
   border-radius: 50%;
   color: #ffffff;
   font-size: 1.2rem;
