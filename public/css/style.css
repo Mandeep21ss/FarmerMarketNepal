@@ -19,7 +19,7 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Inter', 'Roboto', 'Open Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   margin: 0;
   padding: 0;
   background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
@@ -60,6 +60,19 @@ main {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+/* Logo sizing */
+.navbar-brand img {
+  height: 64px;
+  width: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.25s ease;
+}
+
+.navbar-brand img:hover {
+  transform: scale(1.02);
 }
 
 .nav-link {
@@ -158,7 +171,7 @@ main {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.35);
+  background: rgba(0, 0, 0, 0.28);
   z-index: 1;
 }
 
