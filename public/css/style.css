@@ -102,17 +102,22 @@ section::after {
   z-index: 0;
 }
 
-/* top fade: soft white-to-transparent (for sections following darker blocks) */
-section::before {
-  top: -24px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0));
-}
+/* generic fades (kept minimal) */
+section::before { top: -22px; }
+section::after { bottom: -22px; }
 
-/* bottom fade: soft transparent-to-white (for sections preceding lighter blocks) */
-section::after {
-  bottom: -24px;
-  background: linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,0.95));
-}
+/* Per-section precise fades */
+.fade-to-light::before { background: linear-gradient(180deg, var(--bg-light), rgba(255,255,255,0)); }
+.fade-to-light::after  { background: linear-gradient(180deg, rgba(255,255,255,0), var(--bg-light)); }
+
+.fade-to-brown::before { background: linear-gradient(180deg, var(--secondary-brown), rgba(107,66,38,0)); }
+.fade-to-brown::after  { background: linear-gradient(180deg, rgba(107,66,38,0), var(--secondary-brown)); }
+
+.fade-to-green::before { background: linear-gradient(180deg, var(--primary-green), rgba(16,185,129,0)); }
+.fade-to-green::after  { background: linear-gradient(180deg, rgba(16,185,129,0), var(--primary-green)); }
+
+.fade-to-dark::before { background: linear-gradient(180deg, var(--text-dark), rgba(16,24,28,0)); }
+.fade-to-dark::after  { background: linear-gradient(180deg, rgba(16,24,28,0), var(--text-dark)); }
 
 /* Hero needs an inverse darker bottom fade to blend into light sections */
 .hero-section::after {
