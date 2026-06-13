@@ -1,7 +1,7 @@
 <%- include('layout', { user: user, body: '' }) %>
 <% function renderBody(){ %>
   <!-- Hero Section -->
-  <section id="home" class="hero-section text-center fade-to-light" style="background-image: linear-gradient(180deg, rgba(107,66,38,0.28), rgba(255,255,255,1)), url('/images/tomato.png'); background-position: center; background-size: cover; position: relative;">
+  <section id="home" class="hero-section text-center" style="background: url('/images/tomato.png') center/cover no-repeat; position: relative;">
     <div class="overlay"></div>
     <div class="hero-content">
       <h1>Fresh from Farm to Your Table</h1>
@@ -11,7 +11,7 @@
   </section>
 
   <!-- Why Choose Us Section -->
-  <section class="fade-to-light" style="padding: 60px 0; background: linear-gradient(180deg, var(--bg-light), #ffffff);">
+  <section class="fade-to-light" style="padding: 60px 0; background: linear-gradient(180deg, #f8fafb 0%, #ffffff 100%);">
     <div class="container">
       <h2 class="section-title text-center mb-5"><i class="fas fa-leaf"></i> Why Choose Us</h2>
       <div class="row">

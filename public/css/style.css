@@ -104,26 +104,22 @@ section::after {
 
 /* generic fades (kept minimal) */
 /* disable pseudo-element fades now that sections use gradients */
-section::before { display: none; }
-section::after { display: none; }
-
 /* Per-section precise fades */
-.fade-to-light::before { background: linear-gradient(180deg, var(--bg-light), rgba(255,255,255,0)); }
-.fade-to-light::after  { background: linear-gradient(180deg, rgba(255,255,255,0), var(--bg-light)); }
+.fade-to-light::before { background: linear-gradient(180deg, #f8fafb, rgba(255,255,255,0)); }
+.fade-to-light::after  { background: linear-gradient(180deg, rgba(255,255,255,0), #f8fafb); }
 
-.fade-to-brown::before { background: linear-gradient(180deg, var(--secondary-brown), rgba(107,66,38,0)); }
-.fade-to-brown::after  { background: linear-gradient(180deg, rgba(107,66,38,0), var(--secondary-brown)); }
+.fade-to-brown::before { background: linear-gradient(180deg, rgba(107,66,38,0.08), rgba(107,66,38,0)); }
+.fade-to-brown::after  { background: linear-gradient(180deg, rgba(107,66,38,0), rgba(107,66,38,0.08)); }
 
-.fade-to-green::before { background: linear-gradient(180deg, var(--primary-green), rgba(16,185,129,0)); }
-.fade-to-green::after  { background: linear-gradient(180deg, rgba(16,185,129,0), var(--primary-green)); }
+.fade-to-green::before { background: linear-gradient(180deg, rgba(16,185,129,0.08), rgba(16,185,129,0)); }
+.fade-to-green::after  { background: linear-gradient(180deg, rgba(16,185,129,0), rgba(16,185,129,0.08)); }
 
-.fade-to-dark::before { background: linear-gradient(180deg, var(--text-dark), rgba(16,24,28,0)); }
-.fade-to-dark::after  { background: linear-gradient(180deg, rgba(16,24,28,0), var(--text-dark)); }
+.fade-to-dark::before { background: linear-gradient(180deg, rgba(16,24,28,0.08), rgba(16,24,28,0)); }
+.fade-to-dark::after  { background: linear-gradient(180deg, rgba(16,24,28,0), rgba(16,24,28,0.08)); }
 
-/* Hero needs an inverse darker bottom fade to blend into light sections */
+/* Hero should stay plain image with original overlay */
 .hero-section::after {
-  bottom: -24px;
-  background: linear-gradient(0deg, rgba(0,0,0,0.42), rgba(0,0,0,0));
+  display: none;
 }
 
 /* Navbar bottom fade to gently merge into hero */
