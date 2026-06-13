@@ -1,0 +1,47 @@
+<%- include('layout', { user: user, body: '' }) %>
+<% function renderBody(){ %>
+  <h2>Farmer Dashboard</h2>
+  <p>Welcome, <%= user.name %> (<%= user.district || 'Unknown district' %>)</p>
+  <h3>Your Listings</h3>
+  <div class="row">
+    <% products.forEach(function(p){ %>
+      <div class="col-md-4">
+        <div class="product-card">
+          <img src="<%= p.image || '/images/placeholder.png' %>" alt="<%= p.name_en %>">
+          <h4><%= p.name_en %></h4>
+          <p>Rs. <%= p.price %></p>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+  <hr>
+  <h3>Add Product</h3>
+  <form id="productForm" enctype="multipart/form-data">
+    <div class="row">
+      <div class="col-md-6 mb-2"><input class="form-control" name="name_en" placeholder="Name (English)" required></div>
+      <div class="col-md-6 mb-2"><input class="form-control" name="name_np" placeholder="Name (Nepali)"></div>
+    </div>
+    <div class="mb-2"><textarea class="form-control" name="description" placeholder="Description"></textarea></div>
+    <div class="row">
+      <div class="col-md-4 mb-2"><input class="form-control" name="price" placeholder="Price (NPR)" required></div>
+      <div class="col-md-4 mb-2"><select class="form-control" name="category_id">
+        <% const cats = []; %>
+      </select></div>
+      <div class="col-md-4 mb-2"><input class="form-control" type="file" name="image"></div>
+    </div>
+    <button class="btn btn-success">Add</button>
+  </form>
+  <div id="productMessage" class="mt-2"></div>
+
+  <script>
+    document.getElementById('productForm').addEventListener('submit', async function(e){
+      e.preventDefault();
+      const fd = new FormData(this);
+      const res = await fetch('/api/products', { method:'POST', body: fd });
+      const data = await res.json();
+      const msg = document.getElementById('productMessage');
+      if (res.ok) { msg.innerText = 'Product added'; location.reload(); } else { msg.innerText = data.error || 'Failed'; }
+    });
+  </script>
+<% } %>
+<%- renderBody() %>

@@ -1,0 +1,36 @@
+<%- include('layout', { user: null, body: '' }) %>
+<% function renderBody(){ %>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h2>Register</h2>
+      <form id="registerForm">
+        <div class="row">
+          <div class="col-md-6 mb-3"><input class="form-control" name="name" placeholder="Full name" required></div>
+          <div class="col-md-6 mb-3"><input class="form-control" name="email" type="email" placeholder="Email" required></div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3"><input class="form-control" name="password" type="password" placeholder="Password" required></div>
+          <div class="col-md-6 mb-3"><select name="role" class="form-control"><option value="buyer">Buyer</option><option value="farmer">Farmer</option></select></div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3"><input class="form-control" name="district" placeholder="District"></div>
+          <div class="col-md-6 mb-3"><input class="form-control" name="contact" placeholder="Contact number"></div>
+        </div>
+        <button class="btn btn-success">Register</button>
+      </form>
+      <div id="registerMessage" class="mt-2"></div>
+    </div>
+  </div>
+  <script>
+    document.getElementById('registerForm').addEventListener('submit', async function(e){
+      e.preventDefault();
+      const fd = new FormData(this);
+      const body = { name: fd.get('name'), email: fd.get('email'), password: fd.get('password'), role: fd.get('role'), district: fd.get('district'), contact: fd.get('contact') };
+      const res = await fetch('/api/auth/register', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)});
+      const data = await res.json();
+      const msg = document.getElementById('registerMessage');
+      if (res.ok) { location.href = '/dashboard'; } else { msg.innerText = data.error || 'Register failed'; }
+    });
+  </script>
+<% } %>
+<%- renderBody() %>

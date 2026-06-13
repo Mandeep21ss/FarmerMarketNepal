@@ -1,0 +1,21 @@
+<%- include('layout', { user: user, body: '' }) %>
+<% function renderBody(){ %>
+  <h2>Buyer Dashboard</h2>
+  <p>Welcome, <%= user.name %></p>
+  <h3>Available Products</h3>
+  <div class="product-grid">
+    <% products.forEach(function(p){ %>
+      <div class="product-card">
+        <img src="<%= p.image || '/images/placeholder.png' %>" alt="<%= p.name_en %>">
+        <h3><%= p.name_en %></h3>
+        <p>Rs. <%= p.price %></p>
+        <button class="btn btn-success" onclick="addToCart('<%= p.name_en %>', <%= p.price %>)">Add to Cart</button>
+      </div>
+    <% }) %>
+  </div>
+
+  <script>
+    // reuse client-side cart functions from public/js/script.js
+  </script>
+<% } %>
+<%- renderBody() %>

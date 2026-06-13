@@ -1,0 +1,32 @@
+<%- include('layout', { user: user, body: '' }) %>
+<% function renderBody(){ %>
+  <h2>Admin Dashboard</h2>
+  <p>Welcome, <%= user.name %></p>
+  <h3>Users</h3>
+  <table class="table">
+    <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Actions</th></tr></thead>
+    <tbody>
+      <% users.forEach(function(u){ %>
+        <tr><td><%= u.name %></td><td><%= u.email %></td><td><%= u.role %></td><td><button class="btn btn-sm btn-danger" onclick="deleteUser(<%= u.id %>)">Delete</button></td></tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+  <h3>Products</h3>
+  <div class="row">
+    <% products.forEach(function(p){ %>
+      <div class="col-md-4">
+        <div class="product-card">
+          <img src="<%= p.image || '/images/placeholder.png' %>" alt="<%= p.name_en %>">
+          <h4><%= p.name_en %></h4>
+          <p>Rs. <%= p.price %></p>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+
+  <script>
+    async function deleteUser(id){ if(!confirm('Delete user?')) return; const res = await fetch('/api/users/'+id, { method:'DELETE' }); if(res.ok) location.reload(); }
+  </script>
+<% } %>
+<%- renderBody() %>
