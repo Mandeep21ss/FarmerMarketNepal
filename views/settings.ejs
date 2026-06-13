@@ -1,0 +1,72 @@
+<%- include('layout', { user: user, body: '' }) %>
+<% function renderBody(){ %>
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="auth-card">
+          <h2 class="mb-4"><i class="fas fa-user-cog"></i> Account Settings</h2>
+          <form id="settingsForm">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Name</label>
+                <input class="form-control" name="name" value="<%= user.name %>" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Email</label>
+                <input class="form-control" type="email" name="email" value="<%= user.email %>" required>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">District</label>
+                <input class="form-control" name="district" value="<%= user.district || '' %>">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Contact</label>
+                <input class="form-control" name="contact" value="<%= user.contact || '' %>">
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">New Password</label>
+              <input class="form-control" type="password" name="password" placeholder="Leave blank to keep current password">
+            </div>
+            <button class="btn btn-success w-100" type="submit">Save Settings</button>
+          </form>
+          <div id="settingsMessage" class="auth-message mt-3"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('settingsForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const form = new FormData(this);
+      const payload = {
+        name: form.get('name'),
+        email: form.get('email'),
+        district: form.get('district'),
+        contact: form.get('contact'),
+        password: form.get('password')
+      };
+
+      const res = await fetch('/api/users/' + <%= user.id %>, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      const data = await res.json();
+      const msg = document.getElementById('settingsMessage');
+      if (res.ok) {
+        msg.className = 'auth-message success';
+        msg.innerText = '✓ Settings saved successfully.';
+        setTimeout(() => location.reload(), 1200);
+      } else {
+        msg.className = 'auth-message error';
+        msg.innerText = '❌ ' + (data.error || 'Failed to save settings');
+      }
+    });
+  </script>
+<% } %>
+<%- renderBody() %>

@@ -45,7 +45,19 @@ router.post('/login', async (req, res) => {
 
 // Logout
 router.post('/logout', (req, res) => {
-  req.session.destroy(() => res.json({ ok: true }));
+  req.session.destroy(err => {
+    if (err) return res.status(500).json({ error: 'Logout failed' });
+    const wantsJson = req.headers.accept && req.headers.accept.includes('application/json');
+    if (wantsJson) return res.json({ ok: true });
+    res.redirect('/');
+  });
+});
+
+router.get('/logout', (req, res) => {
+  req.session.destroy(err => {
+    if (err) return res.status(500).send('Logout failed');
+    res.redirect('/');
+  });
 });
 
 module.exports = router;

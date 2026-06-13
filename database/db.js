@@ -79,6 +79,7 @@ async function init() {
     description TEXT,
     price INTEGER NOT NULL,
     category_id INTEGER,
+    unit TEXT DEFAULT 'kg',
     image TEXT,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
   );`);

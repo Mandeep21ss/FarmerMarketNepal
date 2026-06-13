@@ -20,7 +20,7 @@
                 <% if(p.description) { %>
                   <p class="text-muted small"><%= p.description %></p>
                 <% } %>
-                <div class="product-price">Rs. <%= p.price %> <span style="font-size: 0.8rem; color: var(--text-light);">/ unit</span></div>
+              <div class="product-price">Rs. <%= p.price %> <span style="font-size: 0.8rem; color: var(--text-light);">/ <%= p.unit || 'kg' %></span></div>
                 <div class="d-grid gap-2">
                   <button class="btn btn-outline-primary btn-sm" onclick="editProduct(<%= p.id %>)">
                     <i class="fas fa-edit"></i> Edit
@@ -62,11 +62,22 @@
           </div>
 
           <div class="row">
-            <div class="col-md-4 mb-3">
+            <div class="col-md-3 mb-3">
               <label class="form-label"><i class="fas fa-money-bill"></i> Price (NPR)</label>
               <input class="form-control" name="price" type="number" placeholder="0.00" required>
             </div>
-            <div class="col-md-4 mb-3">
+            <div class="col-md-3 mb-3">
+              <label class="form-label"><i class="fas fa-weight"></i> Unit</label>
+              <select class="form-control" name="unit">
+                <option value="kg">kg</option>
+                <option value="unit">Unit</option>
+                <option value="piece">Piece</option>
+                <option value="dozen">Dozen</option>
+                <option value="liter">Liter</option>
+                <option value="gram">Gram</option>
+              </select>
+            </div>
+            <div class="col-md-3 mb-3">
               <label class="form-label"><i class="fas fa-tag"></i> Category</label>
               <select class="form-control" name="category_id">
                 <option value="">Select Category</option>
@@ -76,7 +87,7 @@
                 <option value="4">Dairy</option>
               </select>
             </div>
-            <div class="col-md-4 mb-3">
+            <div class="col-md-3 mb-3">
               <label class="form-label"><i class="fas fa-image"></i> Product Image</label>
               <input class="form-control" type="file" name="image" accept="image/*">
             </div>
@@ -112,9 +123,21 @@
       alert('Edit product ' + id + ' (Feature coming soon)');
     }
 
-    function deleteProduct(id) {
-      if (confirm('Are you sure you want to delete this product?')) {
-        alert('Deleting product ' + id + '...');
+    async function deleteProduct(id) {
+      if (!confirm('Are you sure you want to delete this product?')) return;
+      const msg = document.getElementById('productMessage');
+      try {
+        const res = await fetch('/api/products/' + id, { method: 'DELETE' });
+        const data = await res.json();
+        if (!res.ok) {
+          throw new Error(data.error || 'Failed to delete product');
+        }
+        msg.className = 'auth-message success';
+        msg.innerText = '✓ Product deleted successfully!';
+        setTimeout(() => location.reload(), 800);
+      } catch (err) {
+        msg.className = 'auth-message error';
+        msg.innerText = '❌ ' + err.message;
       }
     }
   </script>

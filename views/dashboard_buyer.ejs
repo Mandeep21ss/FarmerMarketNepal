@@ -19,8 +19,8 @@
               <% if(p.description) { %>
                 <p class="text-muted small"><%= p.description %></p>
               <% } %>
-              <div class="product-price">Rs. <%= p.price %> <span style="font-size: 0.8rem; color: var(--text-light);">/ unit</span></div>
-              <button class="btn btn-success w-100" onclick="addToCart('<%= p.name_en %>', <%= p.price %>)">
+              <div class="product-price">Rs. <%= p.price %> <span style="font-size: 0.8rem; color: var(--text-light);">/ <%= p.unit || 'kg' %></span></div>
+              <button class="btn btn-success w-100" onclick="addToCart(<%= p.id %>)">
                 <i class="fas fa-shopping-bag"></i> Add to Cart
               </button>
             </div>
@@ -36,9 +36,7 @@
   </div>
 
   <script>
-    function addToCart(name, price) {
-      alert('✓ ' + name + ' added to cart! (Demo)');
-    }
+    // Cart functions are now centralized in layout.ejs for global use
   </script>
 <% } %>
 <%- renderBody() %>

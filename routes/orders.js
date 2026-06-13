@@ -26,6 +26,10 @@ router.post('/', (req, res) => {
     }
   });
   
+  if (req.session.user && req.session.user.role === 'buyer') {
+    req.session.cart = [];
+  }
+
   res.json({ order });
 });
 

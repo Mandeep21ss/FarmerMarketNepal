@@ -47,10 +47,10 @@ router.post('/', (req, res, next) => {
 
 function handleCreate(req, res) {
   if (!req.session.user || req.session.user.role !== 'farmer') return res.status(403).json({ error: 'Forbidden' });
-  const { name_en, name_np, description, price, category_id } = req.body;
+  const { name_en, name_np, description, price, category_id, unit } = req.body;
   const image = req.file ? path.relative(path.join(__dirname, '..', 'public'), req.file.path) : null;
-  const stmt = db.prepare('INSERT INTO products (farmer_id,name_en,name_np,description,price,category_id,image) VALUES (?,?,?,?,?,?,?)');
-  const info = stmt.run(req.session.user.id, name_en, name_np, description, parseInt(price || 0), category_id || null, req.file ? `/uploads/${path.basename(req.file.path)}` : null);
+  const stmt = db.prepare('INSERT INTO products (farmer_id,name_en,name_np,description,price,category_id,unit,image) VALUES (?,?,?,?,?,?,?,?)');
+  const info = stmt.run(req.session.user.id, name_en, name_np, description, parseInt(price || 0), category_id || null, unit || 'kg', req.file ? `/uploads/${path.basename(req.file.path)}` : null);
   // fetch by farmer_id and name_en (unique identifier for this insertion)
   const product = db.prepare('SELECT * FROM products WHERE farmer_id = ? AND name_en = ? ORDER BY created_at DESC LIMIT 1').get(req.session.user.id, name_en);
   res.json({ product });
@@ -63,10 +63,10 @@ router.put('/:id', upload.single('image'), (req, res) => {
   if (!p) return res.status(404).json({ error: 'Not found' });
   if (!req.session.user || (req.session.user.role !== 'farmer' && req.session.user.role !== 'admin')) return res.status(403).json({ error: 'Forbidden' });
   if (req.session.user.role === 'farmer' && p.farmer_id !== req.session.user.id) return res.status(403).json({ error: 'Forbidden' });
-  const { name_en, name_np, description, price, category_id } = req.body;
+  const { name_en, name_np, description, price, category_id, unit } = req.body;
   let imagePath = p.image;
   if (req.file) imagePath = `/uploads/${path.basename(req.file.path)}`;
-  db.prepare('UPDATE products SET name_en=?, name_np=?, description=?, price=?, category_id=?, image=? WHERE id = ?').run(name_en||p.name_en, name_np||p.name_np, description||p.description, price?parseInt(price):p.price, category_id||p.category_id, imagePath, id);
+  db.prepare('UPDATE products SET name_en=?, name_np=?, description=?, price=?, category_id=?, unit=?, image=? WHERE id = ?').run(name_en||p.name_en, name_np||p.name_np, description||p.description, price?parseInt(price):p.price, category_id||p.category_id, unit||p.unit, imagePath, id);
   const product = db.prepare('SELECT * FROM products WHERE id = ?').get(id);
   res.json({ product });
 });

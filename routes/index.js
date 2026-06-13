@@ -28,7 +28,10 @@ router.get('/dashboard/buyer', (req, res) => {
   const products = db.prepare('SELECT p.*, u.name as farmer_name FROM products p LEFT JOIN users u ON p.farmer_id = u.id').all();
   res.render('dashboard_buyer', { user: req.session.user, products });
 });
-
+router.get('/dashboard/settings', (req, res) => {
+  if (!req.session.user) return res.redirect('/login');
+  res.render('settings', { user: req.session.user });
+});
 router.get('/dashboard/admin', (req, res) => {
   if (!req.session.user || req.session.user.role !== 'admin') return res.redirect('/login');
   const users = db.prepare('SELECT * FROM users').all();

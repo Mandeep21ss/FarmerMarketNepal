@@ -8,6 +8,7 @@ const db = require('./database/db');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // View engine
 app.set('views', path.join(__dirname, 'views'));
@@ -26,6 +27,7 @@ db.ready.then(() => {
   app.use('/', require('./routes/index'));
   app.use('/api/auth', require('./routes/auth'));
   app.use('/api/products', require('./routes/products'));
+  app.use('/api/cart', require('./routes/cart'));
   app.use('/api/orders', require('./routes/orders'));
   app.use('/api/users', require('./routes/users'));
 
