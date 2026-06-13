@@ -4,27 +4,27 @@
     <div class="row justify-content-center align-items-center" style="min-height: 70vh;">
       <div class="col-md-8 col-lg-6">
         <div class="auth-card">
-          <h2><i class="bi bi-person-plus"></i> Create Account</h2>
+          <h2><i class="fas fa-user-plus"></i> Create Account</h2>
           <form id="registerForm">
             <div class="row">
               <div class="col-md-12 mb-3">
-                <label class="form-label"><i class="bi bi-person"></i> Full Name</label>
+                <label class="form-label"><i class="fas fa-user"></i> Full Name</label>
                 <input class="form-control" name="name" placeholder="John Farmer" required>
               </div>
             </div>
             <div class="row">
               <div class="col-md-12 mb-3">
-                <label class="form-label"><i class="bi bi-envelope"></i> Email Address</label>
+                <label class="form-label"><i class="fas fa-envelope"></i> Email Address</label>
                 <input class="form-control" name="email" type="email" placeholder="your@email.com" required>
               </div>
             </div>
             <div class="row">
               <div class="col-md-6 mb-3">
-                <label class="form-label"><i class="bi bi-lock"></i> Password</label>
+                <label class="form-label"><i class="fas fa-lock"></i> Password</label>
                 <input class="form-control" name="password" type="password" placeholder="••••••••" required>
               </div>
               <div class="col-md-6 mb-3">
-                <label class="form-label"><i class="bi bi-briefcase"></i> Role</label>
+                <label class="form-label"><i class="fas fa-briefcase"></i> Role</label>
                 <select name="role" class="form-control">
                   <option value="buyer">🛒 Buyer</option>
                   <option value="farmer">🌾 Farmer</option>
@@ -33,21 +33,21 @@
             </div>
             <div class="row">
               <div class="col-md-6 mb-3">
-                <label class="form-label"><i class="bi bi-geo"></i> District</label>
+                <label class="form-label"><i class="fas fa-map-marker-alt"></i> District</label>
                 <input class="form-control" name="district" placeholder="Kathmandu">
               </div>
               <div class="col-md-6 mb-3">
-                <label class="form-label"><i class="bi bi-telephone"></i> Contact Number</label>
+                <label class="form-label"><i class="fas fa-phone"></i> Contact Number</label>
                 <input class="form-control" name="contact" placeholder="+977-...">
               </div>
             </div>
             <button class="btn btn-success w-100" type="submit">
-              <i class="bi bi-check-circle"></i> Create Account
+              <i class="fas fa-check-circle"></i> Create Account
             </button>
           </form>
           <div id="registerMessage" class="auth-message"></div>
           <p class="text-center mt-4 text-muted">
-            Already have an account? <a href="/login" style="color: var(--primary-green); font-weight: 600;">Sign in</a>
+            Already have an account? <a href="/login" style="color: var(--primary-green); font-weight: 600;"><i class="fas fa-sign-in-alt"></i> Sign in</a>
           </p>
         </div>
       </div>

@@ -3,7 +3,7 @@
   <div class="container py-5">
     <!-- Header -->
     <div class="mb-5">
-      <h1 class="mb-2"><i class="bi bi-shield-lock"></i> Admin Dashboard</h1>
+      <h1 class="mb-2"><i class="fas fa-shield-alt"></i> Admin Dashboard</h1>
       <p class="text-muted">Welcome back, <strong><%= user.name %></strong></p>
     </div>
 
@@ -12,35 +12,35 @@
       <div class="col-md-4 mb-3">
         <div class="auth-card text-center">
           <h3 style="color: var(--primary-green); font-size: 2.5rem;"><%=users ? users.length : 0%></h3>
-          <p class="text-muted"><i class="bi bi-people"></i> Total Users</p>
+          <p class="text-muted"><i class="fas fa-users"></i> Total Users</p>
         </div>
       </div>
       <div class="col-md-4 mb-3">
         <div class="auth-card text-center">
           <h3 style="color: var(--primary-green); font-size: 2.5rem;"><%=products ? products.length : 0%></h3>
-          <p class="text-muted"><i class="bi bi-shop"></i> Total Products</p>
+          <p class="text-muted"><i class="fas fa-store"></i> Total Products</p>
         </div>
       </div>
       <div class="col-md-4 mb-3">
         <div class="auth-card text-center">
           <h3 style="color: var(--primary-green); font-size: 2.5rem;">12</h3>
-          <p class="text-muted"><i class="bi bi-graph-up"></i> Orders Today</p>
+          <p class="text-muted"><i class="fas fa-chart-line"></i> Orders Today</p>
         </div>
       </div>
     </div>
 
     <!-- Users Management Section -->
     <section class="mb-5">
-      <h2 class="mb-4 section-title"><i class="bi bi-people-fill"></i> User Management</h2>
+      <h2 class="mb-4 section-title"><i class="fas fa-users-cog"></i> User Management</h2>
       <div class="table-responsive">
         <table class="table table-hover">
           <thead style="background: linear-gradient(135deg, var(--primary-green), var(--secondary-purple)); color: white;">
             <tr>
-              <th><i class="bi bi-person"></i> Name</th>
-              <th><i class="bi bi-envelope"></i> Email</th>
-              <th><i class="bi bi-briefcase"></i> Role</th>
-              <th><i class="bi bi-geo"></i> District</th>
-              <th><i class="bi bi-gear"></i> Actions</th>
+              <th><i class="fas fa-user"></i> Name</th>
+              <th><i class="fas fa-envelope"></i> Email</th>
+              <th><i class="fas fa-briefcase"></i> Role</th>
+              <th><i class="fas fa-map-marker-alt"></i> District</th>
+              <th><i class="fas fa-cogs"></i> Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -57,13 +57,13 @@
                   <td><%= u.district || '-' %></td>
                   <td>
                     <button class="btn btn-sm btn-outline-danger" onclick="deleteUser(<%= u.id %>)">
-                      <i class="bi bi-trash"></i> Delete
+                      <i class="fas fa-trash"></i> Delete
                     </button>
                   </td>
                 </tr>
               <% }) %>
             <% } else { %>
-              <tr><td colspan="5" class="text-center text-muted py-4"><i class="bi bi-inbox"></i> No users yet</td></tr>
+              <tr><td colspan="5" class="text-center text-muted py-4"><i class="fas fa-inbox"></i> No users yet</td></tr>
             <% } %>
           </tbody>
         </table>
@@ -72,7 +72,7 @@
 
     <!-- Products Management Section -->
     <section>
-      <h2 class="mb-4 section-title"><i class="bi bi-shop"></i> Products on Platform</h2>
+      <h2 class="mb-4 section-title"><i class="fas fa-store"></i> Products on Platform</h2>
       <% if(products && products.length > 0) { %>
         <div class="product-grid">
           <% products.forEach(function(p){ %>
@@ -85,7 +85,7 @@
                 <% } %>
                 <div class="product-price">Rs. <%= p.price %> <span style="font-size: 0.8rem; color: var(--text-light);">/ unit</span></div>
                 <button class="btn btn-sm btn-outline-danger w-100" onclick="deleteProduct(<%= p.id %>)">
-                  <i class="bi bi-trash"></i> Remove
+                  <i class="fas fa-trash"></i> Remove
                 </button>
               </div>
             </div>
@@ -93,7 +93,7 @@
         </div>
       <% } else { %>
         <div class="alert alert-info text-center">
-          <i class="bi bi-info-circle"></i> No products on platform yet
+          <i class="fas fa-info-circle"></i> No products on platform yet
         </div>
       <% } %>
     </section>

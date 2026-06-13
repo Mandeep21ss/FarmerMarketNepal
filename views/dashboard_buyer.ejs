@@ -3,13 +3,13 @@
   <div class="container py-5">
     <!-- Header -->
     <div class="mb-5">
-      <h1 class="mb-2"><i class="bi bi-person-circle"></i> Welcome, <span style="color: var(--primary-green);"><%=user.name%></span></h1>
-      <p class="text-muted"><i class="bi bi-geo"></i> <% if(user.district) { %><%=user.district%><% } else { %>Location not set<% } %></p>
+      <h1 class="mb-2"><i class="fas fa-user-circle"></i> Welcome, <span style="color: var(--primary-green);"><%=user.name%></span></h1>
+      <p class="text-muted"><i class="fas fa-map-marker-alt"></i> <% if(user.district) { %><%=user.district%><% } else { %>Location not set<% } %></p>
     </div>
 
     <!-- Available Products Section -->
     <section>
-      <h2 class="mb-4 section-title"><i class="bi bi-shop"></i> Available Products</h2>
+      <h2 class="mb-4 section-title"><i class="fas fa-store"></i> Available Products</h2>
       <div class="product-grid">
         <% products.forEach(function(p){ %>
           <div class="product-card">
@@ -21,7 +21,7 @@
               <% } %>
               <div class="product-price">Rs. <%= p.price %> <span style="font-size: 0.8rem; color: var(--text-light);">/ unit</span></div>
               <button class="btn btn-success w-100" onclick="addToCart('<%= p.name_en %>', <%= p.price %>)">
-                <i class="bi bi-bag-plus"></i> Add to Cart
+                <i class="fas fa-shopping-bag"></i> Add to Cart
               </button>
             </div>
           </div>
@@ -29,7 +29,7 @@
       </div>
       <% if(products.length === 0) { %>
         <div class="alert alert-info text-center mt-5">
-          <i class="bi bi-info-circle"></i> No products available at the moment
+          <i class="fas fa-info-circle"></i> No products available at the moment
         </div>
       <% } %>
     </section>
