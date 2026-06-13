@@ -45,7 +45,6 @@ The primary goal of this project is to demonstrate a practical end-to-end web ap
 - `views/` — EJS templates for server-rendered pages and dashboards
 - `public/` — Static assets including CSS and JavaScript
 - `uploads/` — Uploaded product images generated at runtime
-- `ailogbook.md` — Project notes and development log
 
 ## Usage
 
