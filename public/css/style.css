@@ -103,8 +103,9 @@ section::after {
 }
 
 /* generic fades (kept minimal) */
-section::before { top: -22px; }
-section::after { bottom: -22px; }
+/* disable pseudo-element fades now that sections use gradients */
+section::before { display: none; }
+section::after { display: none; }
 
 /* Per-section precise fades */
 .fade-to-light::before { background: linear-gradient(180deg, var(--bg-light), rgba(255,255,255,0)); }

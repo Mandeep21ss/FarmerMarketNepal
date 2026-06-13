@@ -1,7 +1,7 @@
 <%- include('layout', { user: user, body: '' }) %>
 <% function renderBody(){ %>
   <!-- Hero Section -->
-  <section id="home" class="hero-section text-center fade-to-light" style="background: url('/images/tomato.png') center/cover no-repeat; position: relative;">
+  <section id="home" class="hero-section text-center fade-to-light" style="background-image: linear-gradient(180deg, rgba(107,66,38,0.28), rgba(255,255,255,1)), url('/images/tomato.png'); background-position: center; background-size: cover; position: relative;">
     <div class="overlay"></div>
     <div class="hero-content">
       <h1>Fresh from Farm to Your Table</h1>
@@ -11,7 +11,7 @@
   </section>
 
   <!-- Why Choose Us Section -->
-  <section class="fade-to-light" style="padding: 60px 0; background: #f8fafb;">
+  <section class="fade-to-light" style="padding: 60px 0; background: linear-gradient(180deg, var(--bg-light), #ffffff);">
     <div class="container">
       <h2 class="section-title text-center mb-5"><i class="fas fa-leaf"></i> Why Choose Us</h2>
       <div class="row">
@@ -41,7 +41,7 @@
   </section>
 
   <!-- Featured Products Section -->
-  <section id="products" class="fade-to-brown" style="padding: 80px 0;">
+  <section id="products" class="fade-to-brown" style="padding: 80px 0; background: linear-gradient(180deg, rgba(107,66,38,0.06), #ffffff);">
     <div class="container">
       <h2 class="section-title text-center mb-5"><i class="fas fa-shopping-cart"></i> Fresh Products Available</h2>
       <div class="product-grid">
@@ -76,7 +76,7 @@
   </section>
 
   <!-- Meet Our Farmers Section -->
-  <section class="fade-to-green" style="padding: 80px 0; background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(107,66,38,0.08));">
+  <section class="fade-to-green" style="padding: 80px 0; background: linear-gradient(180deg, rgba(16,185,129,0.06), #ffffff);">
     <div class="container">
       <h2 class="section-title text-center mb-5"><i class="fas fa-users"></i> Meet Our Farmers</h2>
       <div class="row">
@@ -101,7 +101,7 @@
   <!-- Newsletter removed per request -->
 
   <!-- Contact Section -->
-  <section class="contact-info-section fade-to-dark">
+  <section class="contact-info-section fade-to-dark" style="background: linear-gradient(180deg, rgba(16,24,28,0.06), #ffffff);">
     <div class="container">
       <h2 class="section-title text-white text-center mb-5"><i class="fas fa-phone"></i> Get in Touch</h2>
       <div class="row">
