@@ -4,7 +4,8 @@
   --primary-dark: #059669;
   --primary-light: #6ee7b7;
   --secondary-purple: #8b5cf6;
-  --secondary-brown: #8b5a2b;
+  --secondary-brown: #6b4226;
+  --secondary-brown-dark: #5b3a20;
   --accent-orange: #f97316;
   --bg-light: #f8fafc;
   --text-dark: #1e293b;
@@ -162,7 +163,7 @@ main {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.3) 0%, rgba(139, 90, 43, 0.3) 100%);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.28) 0%, rgba(107, 66, 38, 0.28) 100%);
   z-index: 1;
 }
 
